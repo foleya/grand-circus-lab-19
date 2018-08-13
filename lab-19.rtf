@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Lab 19\
+\
+1.\
+SELECT * FROM customers;\
+\
+2.\
+SELECT DISTINCT Country FROM customers;\
+\
+3.\
+SELECT * FROM customers WHERE CustomerID like ('BL%');\
+\
+4.\
+SELECT * FROM orders LIMIT 100;\
+\
+5.\
+SELECT * FROM customers WHERE PostalCode in ('1010', '3012', '12209', '05023');\
+\
+6.\
+SELECT * FROM orders WHERE ShipRegion IS NOT NULL;\
+\
+7.\
+SELECT * FROM customers ORDER BY Country, City;\
+\
+8.\
+INSERT INTO customers (CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax, Image, ImageThumbnail) VALUES ('DEWEY', 'DeweyCorp', 'Dewey Foley', 'CEO', 'Private', 'Ann Arbor', null, '48104', 'USA', '123-456-7890', '123-456-7890', null, null);\
+\
+9.\
+UPDATE orders SET ShipRegion = 'EuroZone' WHERE ShipCountry = 'France';\
+\
+10.\
+DELETE FROM `order details` WHERE Quantity = '1';\
+    \
+11.\
+SELECT AVG(Quantity), MIN(Quantity), MAX(Quantity) FROM `order details`; \
+\
+12.\
+SELECT AVG(Quantity), MIN(Quantity), MAX(Quantity) FROM `order details` GROUP BY OrderID;\
+\
+13.\
+SELECT CustomerID FROM orders WHERE  OrderID = '10290';\
+\
+14.\
+SELECT * FROM customers JOIN orders ON customers.CustomerID = orders.CustomerID;\
+SELECT * FROM customers LEFT JOIN orders ON customers.CustomerID = orders.CustomerID;\
+SELECT * FROM customers RIGHT JOIN orders ON customers.CustomerID = orders.CustomerID;\
+\
+15.\
+SELECT FirstName FROM employees WHERE ReportsTo IS NULL;\
+\
+16.\
+[Using an inner join instead of the fact that anyone who ReportsTo \'912\'92 is reporting to Andrew]\
+SELECT e1.FirstName AS employee, e2.FirstName AS boss\
+FROM employees AS e1\
+INNER JOIN employees AS e2\
+ON e1.ReportsTo = e2.EmployeeID\
+WHERE e2.FirstName = 'Andrew';\
+}
